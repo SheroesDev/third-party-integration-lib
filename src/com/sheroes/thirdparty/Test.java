@@ -12,8 +12,13 @@ public class Test {
 		thirdPartyClaim.setApikey("apikey");
 		thirdPartyClaim.setApiSecret("mysecret");
 		thirdPartyClaim.setMobile("mobile");
+		thirdPartyClaim.setEmail("email");
 		thirdPartyClaim.setFirstName("firstname");
-		thirdPartyClaim.setLocation("mylocation");
+		thirdPartyClaim.setLastName("lastName");
+		thirdPartyClaim.setLocation("city/vilage");
+		thirdPartyClaim.setLang("lang");
+
+
 		ClaimResponse  claimResponse  = ThirdPartyUtils.encrypt(thirdPartyClaim);
 		System.out.println("Message "+claimResponse.getMessage());
 		System.out.println(" Token "+claimResponse.getToken());
