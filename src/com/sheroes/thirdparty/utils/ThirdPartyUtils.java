@@ -20,6 +20,9 @@ public class ThirdPartyUtils {
 
 	public static ClaimResponse encrypt(ThirdPartyClaim claims) {
 
+		if (claims == null) {
+			return null;
+		}
 		ClaimResponse claimResponse = new ClaimResponse();
 		String encryptedValue = null;
 		try {
@@ -46,7 +49,7 @@ public class ThirdPartyUtils {
 				encryptedValue = jwt.serialize();
 				claimResponse.setSuccess(true);
 				claimResponse.setToken(encryptedValue);
-			}else{
+			} else {
 
 				claimResponse.setMessage(validationResponse.getMessage());
 				claimResponse.setSuccess(false);
@@ -55,12 +58,12 @@ public class ThirdPartyUtils {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			claimResponse.setMessage("Error Occured"+e.getMessage());
+			claimResponse.setMessage("Error Occured" + e.getMessage());
 			claimResponse.setSuccess(false);
 
 		}
 
-	//	return new Token(encryptedValue);
+		//	return new Token(encryptedValue);
 		return claimResponse;
 
 	}
@@ -69,7 +72,7 @@ public class ThirdPartyUtils {
 
 		ThirdPartyClaim claims = new ThirdPartyClaim();
 
-		if(tokenParse.getToken() == null){
+		if (tokenParse.getToken() == null) {
 			return null;
 		}
 		try {
@@ -102,6 +105,7 @@ public class ThirdPartyUtils {
 
 		String message = "";
 		boolean isValid = true;
+
 		if (claim.getApikey() == null || claim.getApikey() == "") {
 			message = "Please make sure that you have included the provided api key";
 			isValid = false;
@@ -121,7 +125,6 @@ public class ThirdPartyUtils {
 		}
 
 		return new ValidationResponse(isValid, message);
-
 	}
 
 	private static JWTClaimsSet.Builder builderClaim(ThirdPartyClaim claims) {
