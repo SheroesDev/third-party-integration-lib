@@ -28,16 +28,6 @@ public class ThirdPartyUtils {
 		try {
 
 			RSAPublicKey publicRsaKey = (RSAPublicKey) PublicKeyReader.get();
-			/*JWTClaimsSet.Builder claimsSet = new JWTClaimsSet.Builder();
-			claimsSet.claim("apiKey", claims.getApikey());
-			claimsSet.claim("apiSecret", claims.getApiSecret());
-			claimsSet.claim("firstName", claims.getFirstName());
-			claimsSet.claim("lastName", claims.getLastName());
-			claimsSet.claim("email", claims.getEmail());
-			claimsSet.claim("mobile", claims.getMobile());
-			claimsSet.claim("lang", claims.getLang());
-			claimsSet.claim("loc", claims.getLocation());*/
-
 			ValidationResponse validationResponse = validateClaim(claims);
 			if (validationResponse.isValid()) {
 				JWTClaimsSet.Builder claimsSet = builderClaim(claims);
@@ -54,7 +44,6 @@ public class ThirdPartyUtils {
 				claimResponse.setMessage(validationResponse.getMessage());
 				claimResponse.setSuccess(false);
 			}
-			//JWTClaimsSet.Builder claimsSet = builderClaim(claims);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,10 +51,7 @@ public class ThirdPartyUtils {
 			claimResponse.setSuccess(false);
 
 		}
-
-		//	return new Token(encryptedValue);
 		return claimResponse;
-
 	}
 
 	public static ThirdPartyClaim decrypt(Token tokenParse) {
@@ -78,22 +64,11 @@ public class ThirdPartyUtils {
 		try {
 
 			EncryptedJWT jwt = EncryptedJWT.parse(tokenParse.getToken());
-
 			RSAPrivateKey privateRsaKey = (RSAPrivateKey) PrivateKeyReader.get();
 			RSADecrypter decrypter = new RSADecrypter(privateRsaKey);
 			jwt.decrypt(decrypter);
-
 			Map<String, Object> claimMap = jwt.getJWTClaimsSet().getClaims();
 			claims = getThirdPartyClaim(claimMap);
-
-		/*	claims.setApikey(String.valueOf(claimMap.get("apiKey")));
-			claims.setApiSecret(String.valueOf(claimMap.get("apiSecret")));
-			claims.setFirstName(String.valueOf(claimMap.get("firstName")));
-			claims.setLastName(String.valueOf(claimMap.get("lastName")));
-			claims.setMobile(String.valueOf(claimMap.get("mobile")));
-			claims.setEmail(String.valueOf(claimMap.get("email")));
-			claims.setLang(String.valueOf(claimMap.get("lang")));
-			claims.setLocation(String.valueOf(claimMap.get("loc")));*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

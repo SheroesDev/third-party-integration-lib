@@ -3,8 +3,14 @@ package com.sheroes.thirdparty.model;
 public class ClaimResponse {
 
 	private String token;
+
 	private boolean isSuccess;
+
 	private String message;
+
+	public ClaimResponse() {
+
+	}
 
 	public String getToken() {
 		return token;

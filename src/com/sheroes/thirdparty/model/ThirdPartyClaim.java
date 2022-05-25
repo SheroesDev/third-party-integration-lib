@@ -14,7 +14,9 @@ public class ThirdPartyClaim {
 	private String lang;
 	private String loc;
 
+    public ThirdPartyClaim(){
 
+	}
 	public String getApikey() {
 		return apikey;
 	}

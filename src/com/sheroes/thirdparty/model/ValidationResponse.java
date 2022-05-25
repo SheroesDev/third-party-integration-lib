@@ -5,7 +5,6 @@ public class ValidationResponse {
 	private boolean isValid;
 	private String message;
 
-
 	public ValidationResponse(){
 
 	}
