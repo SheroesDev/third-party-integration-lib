@@ -117,14 +117,14 @@ public class ThirdPartyUtils {
 
 	private static ThirdPartyClaim getThirdPartyClaim(Map<String, Object> claimMap) {
 		ThirdPartyClaim claims = new ThirdPartyClaim();
-		claims.setApikey(String.valueOf(claimMap.get("apiKey")));
-		claims.setApiSecret(String.valueOf(claimMap.get("apiSecret")));
-		claims.setFirstName(String.valueOf(claimMap.get("firstName")));
-		claims.setLastName(String.valueOf(claimMap.get("lastName")));
-		claims.setMobile(String.valueOf(claimMap.get("mobile")));
-		claims.setEmail(String.valueOf(claimMap.get("email")));
-		claims.setLang(String.valueOf(claimMap.get("lang")));
-		claims.setLocation(String.valueOf(claimMap.get("loc")));
+		claims.setApikey(claimMap.get("apiKey") != null ? claimMap.get("apiKey").toString() : null);
+		claims.setApiSecret(claimMap.get("apiSecret") != null ? claimMap.get("apiSecret").toString() : null);
+		claims.setFirstName(claimMap.get("firstName") != null ? claimMap.get("firstName").toString() : null);
+		claims.setLastName(claimMap.get("lastName") != null ? claimMap.get("lastName").toString() : null);
+		claims.setMobile(claimMap.get("mobile") != null ? claimMap.get("mobile").toString() : null);
+		claims.setEmail(claimMap.get("email") != null ? claimMap.get("email").toString() : null);
+		claims.setLang(claimMap.get("lang") != null ? claimMap.get("lang").toString() : null);
+		claims.setLocation(claimMap.get("loc") != null ? claimMap.get("loc").toString() : null);
 		return claims;
 	}
 }
