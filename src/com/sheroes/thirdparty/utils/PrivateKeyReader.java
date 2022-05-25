@@ -22,7 +22,7 @@ public final  class PrivateKeyReader {
 //		byte[] targetArray = new byte[inputStream.available()];
 //		inputStream.read(targetArray);
 
-        byte[] targetArray = ThirdPartyUtils.toByteArray(inputStream);
+        byte[] targetArray = KeyReader.toByteArray(inputStream);
 		PKCS8EncodedKeySpec spec =
 				new PKCS8EncodedKeySpec(targetArray);
 		KeyFactory kf = KeyFactory.getInstance("RSA");

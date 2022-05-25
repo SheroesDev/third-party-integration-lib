@@ -22,7 +22,7 @@ public final class PublicKeyReader {
 //		byte[] targetArray = new byte[inputStream.available()];
 //		inputStream.read(targetArray);
 
-		byte[] targetArray = ThirdPartyUtils.toByteArray(inputStream);
+		byte[] targetArray = KeyReader.toByteArray(inputStream);
 		X509EncodedKeySpec spec =
 				new X509EncodedKeySpec(targetArray);
 		KeyFactory kf = KeyFactory.getInstance("RSA");
