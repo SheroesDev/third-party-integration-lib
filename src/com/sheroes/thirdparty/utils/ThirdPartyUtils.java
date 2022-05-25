@@ -13,7 +13,7 @@ import java.security.interfaces.RSAPublicKey;
 
 public class ThirdPartyUtils {
 
-	public static ClaimResponse encrypt(ThirdPartyClaim claims) {
+	public static ClaimResponse getToken(ThirdPartyClaim claims) {
 
 		if (claims == null) {
 			return null;
